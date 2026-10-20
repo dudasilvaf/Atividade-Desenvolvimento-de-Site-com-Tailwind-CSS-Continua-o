@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MTX Mecatrônica</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #171d21;
+            color: #ffffff;
+        }
+
+        /* CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        /* CABEÇALHO */
+        header {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #30363a;
+        }
+
+        .logo {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #f2c400;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+            font-size: 11px;
+        }
+
+        nav a:hover {
+            color: #f2c400;
+        }
+
+        .btn-top {
+            background: #f2c400;
+            color: #111;
+            padding: 8px 14px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            width: 50%;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            line-height: 0.98;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 span {
+            color: #f2c400;
+        }
+
+        .hero p {
+            color: #aeb5b9;
+            font-size: 12px;
+            line-height: 1.6;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 11px;
+        }
+
+        .btn-yellow {
+            background: #f2c400;
+            color: #111;
+            font-weight: bold;
+        }
+
+        .btn-dark {
+            border: 1px solid #4a5155;
+            color: white;
+        }
+
+        /* IMAGEM / ÁREA VISUAL */
+        .hero-image {
+            width: 45%;
+            height: 230px;
+            border: 8px solid #313528;
+            border-radius: 20px;
+            background: #222a2f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gear {
+            font-size: 35px;
+            color: #ddd;
+        }
+
+        /* SEÇÕES */
+        section {
+            padding: 55px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .section-title h2 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #899196;
+            font-size: 11px;
+        }
+
+        /* CARDS */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .card {
+            background: #20272c;
+            border: 1px solid #2c3438;
+            padding: 22px;
+            border-radius: 7px;
+        }
+
+        .card-icon {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #92999d;
+            font-size: 10px;
+            line-height: 1.5;
+        }
+
+        /* PROCESSO */
+        .process {
+            background: #20272c;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .step {
+            position: relative;
+        }
+
+        .number {
+            color: #f2c400;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .step h3 {
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
+        .step p {
+            color: #92999d;
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+        /* RESULTADOS */
+        .results {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .result strong {
+            display: block;
+            color: #f2c400;
+            font-size: 22px;
+            margin-bottom: 7px;
+        }
+
+        .result span {
+            color: #a4aaad;
+            font-size: 9px;
+        }
+
+        .result-text {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .result-text p {
+            color: #9da4a8;
+            font-size: 10px;
+            line-height: 1.6;
+            border-left: 2px solid #f2c400;
+            padding-left: 12px;
+        }
+
+        /* ORÇAMENTO */
+        .budget {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .budget h2 {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .budget p {
+            color: #969da1;
+            font-size: 10px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            color: #92999d;
+            font-size: 10px;
+            line-height: 2;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            font-size: 9px;
+            color: #bbbfc1;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            background: #222a2f;
+            border: 1px solid #30383c;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            outline: none;
+            font-size: 10px;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #f2c400;
+        }
+
+        textarea {
+            height: 70px;
+            resize: none;
+        }
+
+        button {
+            border: none;
+            background: #f2c400;
+            color: #111;
+            padding: 11px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 10px;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background: #ffd92b;
+        }
+
+        /* RODAPÉ */
+        footer {
+            border-top: 1px solid #2d3438;
+            padding: 25px 0;
+            color: #737b80;
+            font-size: 9px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 700px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 50px 0;
+            }
+
+            .hero-text {
+                width: 100%;
+            }
+
+            .hero-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .results {
+                grid-template-columns: 1fr 1fr;
+                gap: 30px;
+            }
+
+            .result-text {
+                grid-template-columns: 1fr;
+            }
+
+            .budget {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="container">
+
+        <div class="logo">
+            MTX <span>Mecatrônica</span>
+        </div>
+
+        <nav>
+            <a href="#solucoes">Soluções</a>
+            <a href="#processo">Processo</a>
+            <a href="#resultados">Resultados</a>
+            <a href="#orcamento" class="btn-top">
+                Fale conosco
+            </a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO -->
+    <main>
+
+        <section class="container hero">
+
+            <div class="hero-text">
+
+                <h1>
+                    Mecânica,<br>
+                    elétrica e<br>
+                    <span>software,</span> numa<br>
+                    peça só.
+                </h1>
+
+                <p>
+                    Projetamos e integramos soluções para
+                    transformar ideias em equipamentos
+                    eficientes, seguros e inteligentes.
+                </p>
+
+                <div class="buttons">
+                    <a href="#orcamento" class="btn btn-yellow">
+                        Peça um orçamento
+                    </a>
+
+                    <a href="#solucoes" class="btn btn-dark">
+                        Ver soluções
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="hero-image">
+                <div class="gear">⚙</div>
+            </div>
+
+        </section>
+
+
+        <!-- SOLUÇÕES -->
+        <section id="solucoes" class="container">
+
+            <div class="section-title">
+
+                <h2>Soluções</h2>
+
+                <p>
+                    Do projeto à produção e entrega.
+                </p>
+
+            </div>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="card-icon">🏭</div>
+
+                    <h3>
+                        Robótica industrial
+                    </h3>
+
+                    <p>
+                        Automação de processos para
+                        aumentar produtividade e
+                        reduzir erros.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">⚙️</div>
+
+                    <h3>
+                        Automação de linhas
+                    </h3>
+
+                    <p>
+                        Integração de máquinas,
+                        sensores e sistemas.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-icon">🔧</div>
+
+                    <h3>
+                        Manutenção preditiva
+                    </h3>
+
+                    <p>
+                        Monitoramento para evitar
+                        paradas inesperadas.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROCESSO -->
+        <section id="processo" class="process">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <h2>
+                        Como um projeto acontece
+                    </h2>
+
+                    <p>
+                        Do problema à solução.
+                    </p>
+
+                </div>
+
+
+                <div class="steps">
+
+                    <div class="step">
+
+                        <div class="number">
+                            01
+                        </div>
+
+                        <h3>
+                            Imersão
+                        </h3>
+
+                        <p>
+                            Entendemos o problema,
+                            objetivos e necessidades.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <div class="number">
+                            02
+                        </div>
+
+                        <h3>
+                            Projeto
+                        </h3>
+
+                        <p>
+                            Criamos a solução,
+                            escolhendo tecnologias.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <div class="number">
+                            03
+                        </div>
+
+                        <h3>
+                            Desenvolvimento
+                        </h3>
+
+                        <p>
+                            Construímos, testamos
+                            e validamos.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <div class="number">
+                            04
+                        </div>
+
+                        <h3>
+                            Entrega
+                        </h3>
+
+                        <p>
+                            Instalamos, treinamos
+                            e acompanhamos.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULTADOS -->
+        <section id="resultados" class="container">
+
+            <div class="section-title">
+
+                <h2>
+                    Resultados em campo
+                </h2>
+
+            </div>
+
+
+            <div class="results">
+
+                <div class="result">
+                    <strong>64</strong>
+                    <span>projetos realizados</span>
+                </div>
+
+                <div class="result">
+                    <strong>11</strong>
+                    <span>anos de experiência</span>
+                </div>
+
+                <div class="result">
+                    <strong>98,2%</strong>
+                    <span>de satisfação</span>
+                </div>
+
+                <div class="result">
+                    <strong>30+</strong>
+                    <span>clientes atendidos</span>
+                </div>
+
+            </div>
+
+
+            <div class="result-text">
+
+                <p>
+                    "A solução melhorou nossa produção
+                    e reduziu significativamente o tempo
+                    de operação."
+                </p>
+
+                <p>
+                    "O acompanhamento da equipe durante
+                    todo o projeto fez toda a diferença."
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ORÇAMENTO -->
+        <section id="orcamento" class="container">
+
+            <div class="budget">
+
+                <div>
+
+                    <h2>
+                        Peça um orçamento
+                    </h2>
+
+                    <p>
+                        Conte um pouco sobre seu projeto.
+                        Nossa equipe entrará em contato
+                        para entender suas necessidades.
+                    </p>
+
+                    <div class="contact-info">
+
+                        📍 São Paulo - SP<br>
+                        📞 (11) 99999-9999<br>
+                        ✉ contato@mtxmecatronica.com
+
+                    </div>
+
+                </div>
+
+
+                <form>
+
+                    <div>
+                        <label>Nome</label>
+                        <input
+                            type="text"
+                            placeholder="Seu nome"
+                            required
+                        >
+                    </div>
+
+
+                    <div>
+                        <label>E-mail</label>
+                        <input
+                            type="email"
+                            placeholder="seuemail@email.com"
+                            required
+                        >
+                    </div>
+
+
+                    <div>
+                        <label>Mensagem</label>
+                        <textarea
+                            placeholder="Conte sobre seu projeto..."
+                        ></textarea>
+                    </div>
+
+
+                    <button type="submit">
+                        Enviar pedido
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer>
+
+        <div class="container footer-content">
+
+            <span>
+                © 2026 MTX Mecatrônica.
+                Todos os direitos reservados.
+            </span>
+
+            <span>
+                Termos &nbsp; Privacidade
+            </span>
+
+        </div>
+
+    </footer>
+
+
+</body>
+</html>
